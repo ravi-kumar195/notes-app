@@ -12,7 +12,7 @@ export const Sidebar = () => {
       : `hover:bg-indigo-800 hover:text-slate-50 ${styles}`;
   };
   return (
-    <aside className="flex flex-col gap-3 border-r-2 border-gray-200 p-3 w-30 h-screen">
+    <aside className="flex flex-col gap-3 border-r-2 border-gray-200 p-3 w-32 h-screen">
       <NavLink className={getStyles} to="/">
         <HomeOutlinedIcon />
         <span>Home</span>
