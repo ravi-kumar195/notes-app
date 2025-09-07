@@ -71,7 +71,7 @@ export const NotesCard = ({ title, text, id, isPinned }) => {
 
   return (
     <div
-      className="border border-neutral-800 p-2 rounded-md w-[300px] shadow-lg overflow-hidden hover:shadow-xl"
+      className="border border-neutral-800 p-2 rounded-md w-45 shadow-lg overflow-hidden hover:shadow-xl"
       key={id}
     >
       <div className="flex justify-between mb-2">
