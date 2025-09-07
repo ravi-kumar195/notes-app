@@ -40,7 +40,7 @@ export const Home = () => {
       <main className="flex gap-3">
         <Sidebar />
         <div className="flex flex-col  w-screen mt-7">
-          <div className="flex flex-col w-60 relative self-center">
+          <div className="flex flex-col w-[450px] relative self-center">
             <input
               value={title}
               onChange={onTitleChange}
