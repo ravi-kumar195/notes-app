@@ -25,6 +25,18 @@ export const notesReducer = (state, { type, payload }) => {
         title: "",
         text: "",
       };
+    case "IMP":
+      return {
+        ...state,
+        imp: [...state.imp, state.notes.find(({ id }) => id === payload.id)],
+        notes: state.notes.filter(({ id }) => id !== payload.id),
+      };
+    case "UN-IMP":
+      return {
+        ...state,
+        notes: [...state.notes, state.imp.find(({ id }) => id === payload.id)],
+        imp: state.imp.filter(({ id }) => id !== payload.id),
+      };
     case "PIN":
       return {
         ...state,
@@ -56,6 +68,34 @@ export const notesReducer = (state, { type, payload }) => {
           state.archive.find(({ id }) => id === payload.id),
         ],
         archive: state.archive.filter((note) => note.id !== payload.id),
+      };
+    case "ADD_TO_BIN":
+      const noteFromNotes = state.notes.find(({ id }) => id === payload.id);
+      const noteFromArchive = state.archive.find(({ id }) => id === payload.id);
+      const noteFromImp = state.imp.find(({ id }) => id === payload.id);
+      const noteToDelete = noteFromNotes || noteFromArchive || noteFromImp;
+      return {
+        ...state,
+        deleted: noteToDelete
+          ? [...state.deleted, noteToDelete]
+          : state.deleted,
+        notes: state.notes.filter(({ id }) => id !== payload.id),
+        archive: state.archive.filter(({ id }) => id !== payload.id),
+        imp: state.imp.filter(({ id }) => id !== payload.id),
+      };
+    case "DELETE_PERMANENT":
+      return {
+        ...state,
+        deleted: state.deleted.filter(({ id }) => id !== payload.id),
+      };
+    case "RESTORE":
+      return {
+        ...state,
+        notes: [
+          ...state.notes,
+          state.deleted.find(({ id }) => id === payload.id),
+        ],
+        deleted: state.deleted.filter(({ id }) => id !== payload.id),
       };
     default:
       return state;

@@ -56,7 +56,7 @@ export const Home = () => {
             <button
               disabled={title.length === 0}
               onClick={onAddClick}
-              className="absolute bottom-0 right-0 bg-indigo-800 rounded-full text-white"
+              className="absolute bottom-1 right-1 bg-indigo-800 rounded-full text-white"
             >
               <AddIcon />
             </button>
