@@ -71,14 +71,14 @@ export const NotesCard = ({ title, text, id, isPinned }) => {
 
   return (
     <div
-      className="border border-neutral-800 p-2 rounded-md w-[300px]"
+      className="border border-neutral-800 p-2 rounded-md w-[300px] shadow-lg overflow-hidden hover:shadow-xl"
       key={id}
     >
-      <div className="flex justify-between ">
-        <p>{title}</p>
+      <div className="flex justify-between mb-2">
+        <h2 className="text-xl font-bold">{title}</h2>
         <div className="ml-auto">
           <button onClick={() => onImpClick(id)}>
-            {!IsNotesInBin ? (
+            {!IsNotesInBin && !isNotesInArchive ? (
               IsNotesInImp ? (
                 <LabelImportantIcon />
               ) : (
@@ -104,7 +104,8 @@ export const NotesCard = ({ title, text, id, isPinned }) => {
           )}
         </div>
       </div>
-      <div className="flex flex-col">
+      <hr className="border-t border-slate-400" />
+      <div className="flex flex-col mt-2">
         <p>{text}</p>
 
         {IsNotesInImp && (
