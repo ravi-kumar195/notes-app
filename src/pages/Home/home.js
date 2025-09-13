@@ -61,7 +61,7 @@ export const Home = () => {
               <AddIcon />
             </button>
           </div>
-          <div className="mt-14 ml-4 md:ml-10 flex flex-col gap-5">
+          <div className="mt-14 ml-2 md:ml-10 flex flex-col gap-5">
             {pinnedNotes?.length > 0 && (
               <div>
                 <h3>Pinned Notes</h3>
